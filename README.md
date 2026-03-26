@@ -16,18 +16,6 @@ By equalizing the risk contribution of uncorrelated asset classes (Equities, Bon
 * **Institutional Tear Sheet:** Generates a performance attribution report isolating the "Allocation Alpha" (Risk Parity) from the "Timing Alpha" (Trend Filter).
 * **Anti-Overfitting (Sensitivity Grid):** Automatically runs a parameter grid search across different SMA windows and EWMA half-lives to prove robustness via a Seaborn heatmap.
 
-## 🧮 Mathematical Underpinnings
-
-**1. Risk Parity (Equal Risk Contribution)**
-The objective function minimizes the squared differences between the risk contribution of each asset and the target risk budget ($1/N$).
-$$\min_{w} \sum_{i=1}^{n} \left( \frac{w_i (\Sigma w)_i}{w^T \Sigma w} - \frac{1}{n} \right)^2$$
-*Subject to: $\sum w_i = 1$ and $0 \le w_i \le 1$*
-
-**2. Trend Following Overlay**
-A binary filter applied to the base Risk Parity weights $w_{opt}$ prior to rebalancing:
-$$w_i = \begin{cases} w_{opt} & \text{if } P_t \ge SMA(P, 200) \\ 0 & \text{if } P_t < SMA(P, 200) \end{cases}$$
-*Orphaned weight is swept into a risk-free cash asset.*
-
 ## 🚀 Installation & Usage
 
 **Dependencies:**
